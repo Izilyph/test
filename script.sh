@@ -1,10 +1,10 @@
 #!/bin/bash
 
-message="aazzbhewjnfxe(#1234)(#12345)"
+message="aazzbhewjnfxe (#1234) (#12345)
+        vvvvvvvvvvvvvvvvvvvvvvvvv(#1111)"
 IFS=$'\n'
 for item in $message; do
-    # Extract the numbers between (# and )
-    number=$(echo "$item" | grep -oP '\(#\K\d+(?=\))')
-    echo "$number"
+    grep -oP '\(#\K\d+(?=\))' <<< "$item" | awk '{print $NF}'
 done
+
 

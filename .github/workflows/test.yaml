@@ -17,10 +17,12 @@ jobs:
 
       - name: Run Test
         run: |
-          message="foo(#1234) bar foo"
-          IFS=' ' read -r -a words <<< "$message"
-          for item in "${words[@]}"; do
-            number=$(echo "$item" | grep -oP '\(#\K\d+(?=\))' || true)
+          message="foo(#1234) 
+                    bar 
+                    foo"
+          IFS=$'\n'
+          for item in $message; do
+            number=$(grep -oP '\(#\K\d+(?=\))' <<< "$item" | awk '{print $NF}' || true)
             if [ -n "$number" ]; then
               echo "$number"
             else
@@ -28,6 +30,6 @@ jobs:
             fi
           done
           echo "aled"
-
-
+    
+    
 
