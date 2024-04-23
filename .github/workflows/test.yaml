@@ -27,7 +27,6 @@ jobs:
               echo "No number found in '$item'"
             fi
           done
-          echo "aled"
     
     
 
