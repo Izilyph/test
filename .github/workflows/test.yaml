@@ -20,7 +20,7 @@ jobs:
           message="$(git log --pretty=%s)"
           IFS=$'\n'
           for item in $message; do
-            number=$(grep -oP '\(#\K\d+(?=\))' <<< "$item" | awk '{print $NF}' || true)
+            number=$(grep -oP '\(#\K\d+(?=\))' <<< "$item" | rev | cut -d' ' -f1 | rev || true)
             if [ -n "$number" ]; then
               echo "$number"
             else
