@@ -18,4 +18,4 @@ jobs:
           for item in $message ; do
             grep -oP '\(#.*\)' <<< "$item" | awk '{print $NF}' | grep -oP '\d+'
           done
-          echo $?
+          echo "aled"
