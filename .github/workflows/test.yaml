@@ -19,6 +19,7 @@ jobs:
         run: |
           message="foo(#1234) bar foo"
           for item in $message ; do
-            echo "$item"
+            number=$(echo "$item" | grep -oP '\(#\K\d+(?=\))')
+            echo "$number"
           done
           echo "aled"

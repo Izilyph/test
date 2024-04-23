@@ -1,9 +1,10 @@
 #!/bin/bash
 
-message="(git log --pretty=%s)"
-
+message="aazzbhewjnfxe(#1234)(#12345)"
 IFS=$'\n'
-for item in $message ; do
-  grep -oP '\(#.*\)' <<< "$item" | awk '{print $NF}' | grep -oP '\d+'
+for item in $message; do
+    # Extract the numbers between (# and )
+    number=$(echo "$item" | grep -oP '\(#\K\d+(?=\))')
+    echo "$number"
 done
-echo $?
+
