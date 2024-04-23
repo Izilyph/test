@@ -20,9 +20,14 @@ jobs:
           message="foo(#1234) bar foo"
           IFS=' ' read -r -a words <<< "$message"
           for item in "${words[@]}"; do
-            number=$(echo "$item" | grep -oP '\(#\K\d+(?=\))')
-            echo "$number"
+            number=$(echo "$item" | grep -oP '\(#\K\d+(?=\))' || true)
+            if [ -n "$number" ]; then
+              echo "$number"
+            else
+              echo "No number found in '$item'"
+            fi
           done
           echo "aled"
+
 
 
