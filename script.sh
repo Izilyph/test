@@ -1,6 +1,6 @@
 #!/bin/bash
 
-message="foo(#1234) bar foo"
+message="(git log --pretty=%s)"
 for item in $message ; do
   grep -oP '\(#.*\)' <<< "$item" | awk '{print $NF}' | grep -oP '\d+'
 done
