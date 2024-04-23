@@ -3,7 +3,7 @@ name: Test Workflow
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   test:
@@ -14,4 +14,4 @@ jobs:
 
       - name: Run Test
         run: |
-          ./test_script.sh
+          ./script.sh
