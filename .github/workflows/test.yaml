@@ -12,6 +12,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Run script
+        run: ./script.sh 
+
       - name: Run Test
         run: |
           message="foo(#1234) bar foo"
