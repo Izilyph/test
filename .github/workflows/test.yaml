@@ -17,9 +17,7 @@ jobs:
 
       - name: Run Test
         run: |
-          message="foo(#1234) 
-                    bar 
-                    foo"
+          message="$(git log --pretty=%s)"
           IFS=$'\n'
           for item in $message; do
             number=$(grep -oP '\(#\K\d+(?=\))' <<< "$item" | awk '{print $NF}' || true)
